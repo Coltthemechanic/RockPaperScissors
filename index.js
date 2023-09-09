@@ -5,26 +5,13 @@
 
 let choice = ["rock", "paper", "scissors"] // this works
 
-console.log(choice)
 let randomNum = Math.floor(Math.random() * choice.length) // this works
+ 
 
-console.log(randomNum) 
+const playerSelection = prompt("rock paper scissors") 
+  
 
-const playerSelection = prompt("rock paper scissors")
 
-function getPlayerSelection() {
-
-    if (userAnswer === "rock") {
-    return "rock";
-    }
-    else if (userAnswer === "paper") {
-    return "paper";
-}
-    else {
-        return "scissors";
-    }
-        
-    }
 
 console.log(playerSelection) // this works
 
@@ -46,16 +33,16 @@ console.log(getComputerChoice())
   const computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {   // This works 
-     if (playerSelection === "rock" && computerSelection === "scissors" ||
-     playerSelection === "paper" && computerSelection === "rock" ||
-     playerSelection === "scissors" && computerSelection === "paper") {
+     if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors" ||
+     playerSelection.toLowerCase() === "paper" && computerSelection === "rock" ||
+     playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
 
      return "good job you win this time";
      }
 
-     else if (playerSelection === "scissors" && computerSelection === "rock" ||
-     playerSelection === "rock" && computerSelection === "paper" ||
-     playerSelection === "paper" && computerSelection === "scissors") {
+     else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock" ||
+     playerSelection.toLowerCase() === "rock" && computerSelection === "paper" ||
+     playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") {
         
         return "you lose this round";
      }
