@@ -5,54 +5,86 @@
 
 let choice = ["rock", "paper", "scissors"] // this works
 
-let randomNum = Math.floor(Math.random() * choice.length) // this works
+let randomNum = Math.floor(Math.random() * choice.length) //randomNum works with getComputerChoice() and correlates it to a string to get randomized computer choice
  
 
-const playerSelection = prompt("rock paper scissors") 
-  
+
+  let playerScore = 0;
+  let computerScore = 0;
 
 
-
-console.log(playerSelection) // this works
-
-    function getComputerChoice() {//this function works!
+    function getComputerChoice() {
+      
         let choice =  ["rock", "paper", "scissors"]
+        let randomNum = Math.floor(Math.random() * choice.length)
         if (randomNum == 0)
         return "rock";
         else if (randomNum == 1)
         return "paper";
-        else 
-        return "scissors";
+        else {
+          return "scissors";
+        }
     }
+  
 
-
-console.log(getComputerChoice())
-
-
-
-  const computerSelection = getComputerChoice();
-
-function playRound(playerSelection, computerSelection) {   // This works 
-     if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors" ||
-     playerSelection.toLowerCase() === "paper" && computerSelection === "rock" ||
-     playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
-
-     return "good job you win this time";
+function playRound() {  // this function gets the User choice to play RPS
+    const playerSelection = prompt("rock paper or scissors")
+    let computerSelection = getComputerChoice();
+    checkWinner()
+   
+    
+     if (playerSelection === "rock" && computerSelection === "scissors" ||
+     playerSelection === " paper" && computerSelection === "rock" ||
+     playerSelection === "scissors" && computerSelection === "paper") {
+        playerScore++;
+     return checkWinner();
      }
 
-     else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock" ||
-     playerSelection.toLowerCase() === "rock" && computerSelection === "paper" ||
-     playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") {
-        
-        return "you lose this round";
+     else if (playerSelection === " scissors" && computerSelection === "rock" ||
+     playerSelection === "rock" && computerSelection === "paper" ||
+     playerSelection === " paper" && computerSelection === "scissors") {
+        computerScore++
+        return checkWinner();
      }
 
      else {
-        return "it's a tie";
+      
+        return checkWinner();
      }
+
+     function checkWinner() { // this nested function works with playRound() to check the winner of the individual rounds played.
+         if ((playerSelection === "rock" && computerSelection === "scissors" ||
+         playerSelection === " paper" && computerSelection === "rock" ||
+         playerSelection === "scissors" && computerSelection === "paper")) {
+            return `${playerSelection} beats ${computerSelection} ! you win this round!`
+          }
+          else if (playerSelection === " scissors" && computerSelection === "rock" ||
+          playerSelection === "rock" && computerSelection === "paper" ||
+          playerSelection === " paper" && computerSelection === "scissors") {
+            return `${computerSelection} beats ${playerSelection}! you lose this round!`;
+          }
+          else {
+            return "it's a tie!";
+          }
+     }
+
 }
 
-console.log(playRound(playerSelection, computerSelection)) // all functions working
+
+
+function game() { // this function puts all of them together to run the game 
+    getComputerChoice()
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
+    console.log(`${playerScore} ${computerScore}`)
+    console.log(declareWinner())
+}
+
+game()
+
 
 
 
