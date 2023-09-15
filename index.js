@@ -12,7 +12,6 @@ let randomNum = Math.floor(Math.random() * choice.length) //randomNum works with
   let playerScore = 0;
   let computerScore = 0;
 
-
     function getComputerChoice() {
       
         let choice =  ["rock", "paper", "scissors"]
@@ -67,8 +66,22 @@ function playRound() {  // this function gets the User choice to play RPS
             return "it's a tie!";
           }
      }
+     
+     }
 
-}
+    function declareWinner() { // this function calls who wins after all rounds have been played.
+      if (playerScore > computerScore) {
+        return "You won the game! great job"
+      }
+      else if (computerScore > playerScore) {
+        return "computer wins the game."
+      }
+      else if (computerScore == playerScore) {
+        return "game ends with a tie"
+      }
+    }
+
+
 
 
 
